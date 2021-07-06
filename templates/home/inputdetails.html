@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% block title %}{{request.user.first_name}}'s Details{% endblock title %}
+{% load static %}
+{% block css %}
+/* Dashed border */
+hr.dashed {
+border-top: 3px dashed #bbb;
+}
+body {
+background-image: url("{% static "indian1.jpg" %}");
+background-repeat: repeat;
+background-attachment: fixed;
+}
+{% endblock css %}
+
+{% block body %}
+<div class="mt-3 mb-3">
+    <!-- <div style="background-color: rgb(245, 221, 245)"> -->
+    <!-- <div class="container"> -->
+    <div class="container" style="background-color: rgb(193, 216, 191)">
+        <h1 class="text-center" style="color: blue;">{{request.user.first_name}}'s Details</h1>
+        <hr class="dashed">
+
+        <form class="row g-3" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- <input type="hidden" id="userId" name="userId" value="{{request.user.id}}"> -->
+            <input type="hidden" id="user" name="username" value="{{request.user.username}}">
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Username</label>
+                <input class="form-control" type="text" placeholder="{{request.user.username}}" disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="inputfirstname" class="form-label">First Name</label>
+                <input type="text" class="form-control" name="firstname" id="inputfirstname"
+                    placeholder="{{request.user.first_name}}" disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="inputlastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lastname" id="inputlastname"
+                    placeholder="{{request.user.last_name}}" disabled>
+            </div>
+            <div class="col-12">
+                <label for="inputpic" class="form-label">Change Pic</label>
+                <input type="file" class="form-control" name="changepic" id="inputpic" required>
+            </div>
+            <!-- <div class="col-md-6">
+                <img class="img-fluid" src="/media/{{profile.pic}}" alt="">
+            </div> -->
+            
+            <div class="col-md-2">
+                <label for="age" class="form-label">Age</label>
+                <select class="form-select" name="age" id="age" required>
+                    <!-- <option selected>20</option> -->
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option selected value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                </select>
+                <!-- <input type="number" class="form-control" name="age" id="age" placeholder="21"> -->
+            </div>
+            <div class="col-md-6">
+                <label for="inputdateofbirth" class="form-label">Date of Birth</label>
+                <input type="text" class="form-control" name="dateofbirth" id="inputdateofbirth" placeholder="2000-02-14" required>
+            </div>            
+            <div class="col-md-4">
+                <label for="inputgender" class="form-label">Gender</label>
+                <select class="form-select" name="gender" id="gender" required>
+                    <option selected>Woman</option>
+                    <option value="Man">Man</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="inputcity" class="form-label">City</label>
+                <input type="text" class="form-control" name="city" id="inputcity" placeholder="Indore" required>
+            </div>
+            <div class="col-8">
+                <label for="inputAddress" class="form-label">Full Address</label>
+                <input type="text" class="form-control" name="address" id="inputAddress" placeholder="H No 23, Raja Bhoj Nagar, Indore, MP - 462115" required>
+            </div>
+            <div class="col-md-6">
+                <label for="inputemail" class="form-label">Email ID</label>
+                <input type="email" class="form-control" name="email" id="inputemail" placeholder="{{request.user.email}}"
+                    disabled>
+            </div>
+            <div class="col-md-6">
+                <label for="inputphone" class="form-label">Contact</label>
+                <input type="tel" class="form-control" name="contact" id="inputphone" placeholder="+91 9876543211" required>
+            </div>
+            <hr class="dashed">
+
+            <div class="col-md-6">
+                <label for="inputefathername" class="form-label">Father's Name</label>
+                <input type="text" class="form-control" name="fathername" id="inputefathername"
+                placeholder="Enter your father's name">
+            </div>
+            <div class="col-md-6">
+                <label for="inputmothername" class="form-label">Mother's Name</label>
+                <input type="text" class="form-control" name="mothername" id="inputmothername"
+                placeholder="Enter your mother's name">
+            </div>
+            <div class="col-md-6">
+                <label for="inputefatherphone" class="form-label">Father's Contact</label>
+                <input type="tel" class="form-control" name="fathercontact" id="inputefatherphone"
+                placeholder="Enter your father's contact">
+            </div>
+            <div class="col-md-6">
+                <label for="inputqualification" class="form-label">Qualification</label>
+                <input type="text" class="form-control" name="qualification" id="inputqualification"
+                placeholder="Bechelor of Technology"  required>
+            </div>
+            <div class="col-md-4">
+                <label for="occupation" class="form-label">Occupation</label>
+                <input type="text" class="form-control" name="occupation" id="occupation"
+                placeholder="Software Engineer" required>
+            </div>
+            <div class="col-md-2">
+                <label for="salary" class="form-label">Salary</label>
+                <input type="number" class="form-control" name="salary" id="salary" placeholder="500000" required>
+            </div>
+            <div class="col-md-6">
+                <label for="workaddress" class="form-label">Work Address</label>
+                <input type="text" class="form-control" name="workaddress" id="workaddress" placeholder="Street No 06, Model Towen, Banglore, Karnataka - 700148" required>
+            </div>
+            <div class="col-md-3">
+                <label for="hobby" class="form-label">Hobby</label>
+                <input type="text" class="form-control" name="hobby" id="hobby" placeholder="Design and Debugging">
+            </div>
+            <div class="col-md-3">
+                <label for="caste" class="form-label">Caste</label>
+                <input type="text" class="form-control" name="caste" id="caste" placeholder="Rajput" required>
+            </div>
+            <div class="col-md-3">
+                <label for="inputState" class="form-label">Religion</label>
+                <select class="form-select" name="religion" id="religion" required>
+                    <option selected value="Hindu">Hindu</option>
+                    <option value="Sikh">Sikh</option>
+                    <option value="Buddhist">Buddhist</option>
+                    <option value="Muslim">Muslim</option>
+                    <option value="Jain">Jain</option>
+                    <option value="Jewish">Jewish</option>
+                    <option value="Parsi">Parsi</option>
+                    <option value="Spiritual">Spiritual</option>
+                    <option value="No Religion">No Religion</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="family_type" class="form-label">Family Type</label>
+                <input type="text" class="form-control" name="familytype" id="family_type" placeholder="Small" required>
+            </div>
+            <div class="col-12 mb-3 d-grid gap-2">
+                <!-- <a type="submit" href="/editProfile/{{user.id}}" class="btn btn-primary"><b>Update My Profile</b></a> -->
+                <button type="submit" class="btn btn-primary"><b>Save My Profile</b></button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body %}

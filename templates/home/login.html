@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}
+{% load static %}
+{% block css %}
+/* Dashed border */
+hr.dashed {
+border-top: 3px dashed #bbb;
+}
+body {
+background-image: url("{% static "indian1.jpg" %}");
+background-repeat: repeat;
+background-attachment: fixed;
+}
+{% endblock css %}
+
+{% block body %}
+<div class="container mt-3 mb-3" style="background-color: rgb(193, 216, 191)">
+    <h1 class="text-center" style="color: blue;">Login</h1>
+    <hr class="dashed">
+
+    <div class="container col-md-6">
+        <form class="row g-3" method="POST">
+            {% csrf_token %}
+            <div class="col-12">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" required>
+            </div>        
+            <div class="col-12">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+            </div>        
+            <button type="submit" class="btn btn-danger btn-lg mt-3 mb-3">Login</button>
+            <p>Not registered yet? <a href="/register" class="btn btn-success btn-sm">Register now</a></p>
+        </form>
+    </div>
+</div>
+{% endblock body %}

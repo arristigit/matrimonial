@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock title %}
+{% load static %}
+{% block css %}
+/* Dashed border */
+hr.dashed {
+border-top: 3px dashed #bbb;
+}
+body {
+background-image: url("{% static "indian1.jpg" %}");
+background-repeat: repeat;
+background-attachment: fixed;
+}
+{% endblock css %}
+
+{% block body %}
+<div class="container mt-3 mb-3" style="background-color:rgb(193, 216, 191)">
+    <h1 class="text-center" style="color: blue;">Register</h1>
+    <hr class="dashed">
+
+    <form class="row g-3" method="POST">
+        {% csrf_token %}
+        <div class="col-12">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" required>
+        </div>
+        <div class="col-md-6">
+            <label for="firstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Enter your first name" required>
+        </div>
+        <div class="col-md-6">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Enter your last name" required>
+        </div>
+        <div class="col-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+        </div>
+        <div class="col-md-6">
+            <label for="confirmpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" name="confirmpassword" id="confirmpassword" placeholder="Re-enter the password" required>
+        </div>
+        <button type="submit" class="btn btn-danger btn-lg mt-3 mb-3">Register</button>
+        <p>Already registered? <a href="/login" class="btn btn-success btn-sm">Login</a></p>
+    </form>
+</div>
+{% endblock body %}

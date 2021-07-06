@@ -1,0 +1,19 @@
+full name = first name + last name
+customer pic 
+email id
+phone
+Date of birth
+city
+address
+==========Family and other detail
+Father's name
+Mother's name
+Father's contact
+Work address
+Hobby
+Occupation
+Salary
+Qualification
+Caste
+Religion
+Family Type: small/big/joint
