@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-a3jk5xim#7mv=^6e@0(lj6pihrh0qsh)g%yj35t%!hzt@y@cl0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,10 +75,22 @@ WSGI_APPLICATION = 'shaadi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd70mcfl21nhcr9',
+        'USER': 'uiibvjzgdthefc',
+        'PASSWORD': 'a3edf998d3d9fbcd8e9b3a99c41a642cf97250a335e3f7b74f8ed99bbd022461',
+        'HOST': 'ec2-34-193-110-25.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
